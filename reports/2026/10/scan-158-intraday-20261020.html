@@ -1,0 +1,34 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="dark"><title>美股盘中扫描阻断报告 · 2026-10-20</title><style>
+:root{--bg:#0b1017;--card:#151d27;--line:#2a3747;--txt:#edf3fa;--muted:#a4b0bf;--red:#ff6b6b;--amber:#ffbd59;--blue:#73b7ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:1080px;margin:auto;padding:22px 16px 44px}h1{font-size:clamp(27px,5vw,40px);margin:0 0 8px;line-height:1.2}h2{font-size:21px;margin:28px 0 12px}.muted{color:var(--muted)}.header{border-bottom:1px solid var(--line);padding:8px 0 18px}.alert{margin:18px 0;background:#291b1d;border:1px solid #704146;border-left:5px solid var(--red);padding:16px;border-radius:12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px}.num{font-size:28px;font-weight:750}.badge{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:2px 9px;color:var(--muted);font-size:13px}.bad{color:var(--red)}.amber{color:var(--amber)}.bars{display:grid;gap:11px}.row{display:grid;grid-template-columns:minmax(125px,240px) 1fr 42px;align-items:center;gap:10px}.track{height:12px;background:#283646;border-radius:8px;overflow:hidden}.fill{height:100%;background:var(--red)}.fill.amber{background:var(--amber)}.list{columns:2;column-gap:28px}.list span{display:block;break-inside:avoid;padding:5px 0;border-bottom:1px solid #202b38}.small{font-size:13px;color:var(--muted)}footer{border-top:1px solid var(--line);margin-top:28px;padding-top:16px;color:var(--muted)}@media(max-width:560px){main{padding:14px 12px 34px}.list{columns:1}.row{grid-template-columns:125px 1fr 28px;font-size:14px}}
+</style></head><body><main><header class="header"><h1>美股盘中扫描｜数据阻断报告</h1><div class="muted">目标批次：2026-10-20 北京时间 22:00 · scan_run_id=158 · 不构成实时市场判断</div></header>
+<div class="alert"><strong>扫描失败，未形成可用的持仓或市场研究结论。</strong><br>本轮 0 个标的完成扫描；43 项数据检查均被阻断（42 个证券行情项及 1 项市场状态输入）。本页不拼接旧扫描、缓存或后续批次结果。</div>
+<section><h2>本轮状态概览</h2><div class="grid">
+<div class="card"><div class="muted">扫描执行状态</div><div class="num bad">FAILED（失败）</div><div class="small">22:00:04 启动，22:03:02 结束</div></div>
+<div class="card"><div class="muted">同批完成扫描</div><div class="num">0</div><div class="small">持仓评估 0 · 观察池结果 0</div></div>
+<div class="card"><div class="muted">数据质量阻断</div><div class="num bad">43</div><div class="small">42 个证券行情项 + 市场状态输入</div></div>
+<div class="card"><div class="muted">盘中行情时间戳</div><div class="num amber">缺失</div><div class="small">最新有效完整日线未达到预期日期</div></div>
+<div class="card"><div class="muted">新增信号 / 风险事件</div><div class="num">0 / 0</div><div class="small">由于扫描被阻断，不可解释为“没有机会或风险”</div></div>
+</div></section>
+<section><h2>数据新鲜度与来源状态</h2><div class="card"><p>本轮数据要求日期为 2026-10-19，记录到的 Nasdaq（纳斯达克）数据最新交易日仅到 2026-10-15；部分标的历史数据日期更早。最新盘中数据时间戳为空，市场状态因标普500 ETF（SPY）和纳指100 ETF（QQQ）均无合格行情而不可计算。</p><p>路由记录显示：Nasdaq（纳斯达克）返回旧日期或短时熔断；Yahoo（雅虎行情）返回 503 服务不可用；AKShare（开源行情接口）连接代理失败。扫描汇总的 source failure 列表为空，但行情数据仍因陈旧而被阻断；这两类计数含义不同。</p><span class="badge">REPORT_BLOCKED（报告阻断）</span> <span class="badge">NOT_EVALUATED（未评估）</span> <span class="badge">UNKNOWN（未知）</span></div></section>
+<section><h2>阻断数量分布</h2><div class="card"><div class="bars">
+<div class="row"><span>陈旧约 134 小时</span><div class="track"><div class="fill" style="width:56%"></div></div><b>24</b></div>
+<div class="row"><span>陈旧约 158 小时</span><div class="track"><div class="fill amber" style="width:2.4%"></div></div><b>1</b></div>
+<div class="row"><span>陈旧约 206 小时</span><div class="track"><div class="fill" style="width:39.5%"></div></div><b>17</b></div>
+<div class="row"><span>市场状态输入不可用</span><div class="track"><div class="fill amber" style="width:2.4%"></div></div><b>1</b></div>
+</div><p class="small">43 项总数包含 42 个证券行情项与 1 个市场状态输入；小时数为系统记录的陈旧时长，不是价格或收益指标。</p></div></section>
+<section><h2>持仓、观察池与市场研究</h2><div class="grid">
+<div class="card"><h3>持仓研究状态</h3><p>本轮没有同批持仓评估记录。所有持仓的技术状态、持仓生命周期、价格行为和下一确认条件均为不可用；不使用其他扫描的持仓快照代替。</p></div>
+<div class="card"><h3>自选股与观察池</h3><p>本轮没有完成的观察池评估，也没有新增正式确认或预警。数据阻断下的零结果不代表标的被排除或没有机会。</p></div>
+<div class="card"><h3>市场环境与机构研究</h3><p>本轮市场环境状态为 UNKNOWN（未知），未生成机构研究上下文。不能推断市场偏多、偏空或机构观点没有变化。</p></div>
+<div class="card"><h3>状态变化与偏左侧观察</h3><p>本轮无阶段变化事件、无偏左侧早期观察结果。由于 0 个标的完成扫描，不能把“无事件”当作稳定性确认。</p></div>
+</div></section>
+<section><h2>数据质量阻断标的</h2><div class="card"><p class="muted">证券行情项 42 个；除单独注明外，按系统记录的陈旧时长分组。</p>
+<div class="list">
+<span>标普500 ETF（SPY）</span><span>纳指100 ETF（QQQ）</span><span>罗素2000 ETF（IWM）</span><span>道琼斯工业平均 ETF（DIA）</span><span>科技 ETF（XLK）</span><span>半导体 ETF（SMH）</span><span>金融精选行业 ETF（XLF）</span><span>医疗保健 ETF（XLV）</span><span>能源精选 ETF（XLE）</span>
+<span>苹果（AAPL）</span><span>微软（MSFT）</span><span>英伟达（NVDA）</span><span>特斯拉（TSLA）</span><span>亚马逊（AMZN）</span><span>Meta（META）</span><span>谷歌（GOOGL）</span><span>摩根大通（JPM）</span><span>博通（AVGO）</span><span>三菱日联金融（MUFG）</span><span>汇丰控股（HSBC）</span><span>诺华制药（NVS）</span><span>台积电（TSM）</span><span>洛克希德·马丁（LMT）</span><span>埃克森美孚（XOM）</span><span>可口可乐（KO）</span>
+<span>超威半导体（AMD）</span><span>贝莱德（BLK）</span><span>卡特彼勒（CAT）</span><span>德意志银行（DB）</span><span>加拿大鹅（GOOS）</span><span>福特汽车（F）</span><span>IBM（国际商业机器）</span><span>李维斯（LEVI）</span><span>麦当劳（MCD）</span><span>奈飞（NFLX）</span><span>辉瑞（PFE）</span><span>餐饮品牌国际（QSR）</span><span>壳牌（SHEL）</span><span>闪迪（SNDK）</span><span>丰田汽车（TM）</span><span>联合健康（UNH）</span><span>沃尔玛（WMT）</span>
+</div><p class="small">陈旧约 134 小时：上方前 24 个证券；可口可乐（KO）约 158 小时；其余 17 个证券约 206 小时。另有市场状态输入阻断。</p></div></section>
+<section><h2>审计与复核</h2><div class="card"><p>数据库运行状态为 FAILED（失败），但摘要 JSON 的 overall_task_status 字段记录为 SUCCESS（成功），且扫描数为 0。状态字段相互矛盾，应以运行表 FAILED 和“0 项扫描、43 项阻断”判定本轮不可用。</p><p>本轮无正式报告 ID、无数据截止时间、无盘中时间戳。后来发生的定时运行不属于本快照，未并入本页。</p><p>人工复核重点：检查行情源与代理连通性、旧日线门控、扫描状态汇总字段一致性；在数据恢复前，不生成股票或市场结论。</p></div></section>
+<footer>本报告仅描述 2026-10-20 22:00 这一轮同批结果；扫描失败，不使用陈旧数据替代。本报告仅供研究与人工复核，不构成买卖、仓位或订单指令。</footer>
+</main></body></html>
