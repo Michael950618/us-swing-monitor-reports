@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>报告交付链路验收</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1017;--panel:#151d28;--line:#283548;--text:#ecf2fb;--muted:#a2b0c2;--green:#54d39b;--blue:#82b8ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(1000px 500px at 10% -10%,#17304d 0,transparent 65%),var(--bg);color:var(--text);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:900px;margin:auto;padding:24px 16px 56px}.eyebrow{color:var(--blue);font-size:13px;letter-spacing:.1em;font-weight:800}.hero,.card{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:20px;margin-top:16px}
+h1{font-size:clamp(28px,7vw,44px);line-height:1.15;margin:8px 0 12px}.lead{color:var(--muted);max-width:68ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:16px}.metric{background:#101720;border:1px solid var(--line);border-radius:14px;padding:16px}.label{font-size:13px;color:var(--muted)}.value{font-size:22px;font-weight:800;margin-top:5px}.ok{color:var(--green)}
+.steps{display:grid;gap:10px;counter-reset:step}.steps div{counter-increment:step;background:#101720;border-left:3px solid var(--blue);border-radius:8px;padding:12px 14px}.steps div:before{content:counter(step) " · ";font-weight:800;color:var(--blue)}
+small,footer{color:var(--muted)}footer{text-align:center;margin-top:24px;font-size:13px}
+</style></head><body><main>
+<div class="eyebrow">交付通道验收 · 2026-10-22</div>
+<section class="hero"><h1>公开 HTML 报告交付链路</h1><p class="lead">本页用于验证免登录静态报告托管，不是行情或投资研究报告。页面不含证券行情、账户信息、持仓、凭据或本机路径。</p>
+<div class="grid"><div class="metric"><div class="label">托管状态</div><div class="value ok">Pages 已构建</div></div><div class="metric"><div class="label">验证方式</div><div class="value">匿名 HTTPS 读取</div></div><div class="metric"><div class="label">唯一验收标识</div><div class="value">HTML-DELIVERY-20261022</div></div></div></section>
+<section class="card"><h2>后续报告发布与验收</h2><div class="steps"><div>先生成与同一研究快照绑定的独立 HTML。</div><div>执行隐私过滤，只发布脱敏页面到专用公开报告站；使用唯一文件名，不覆盖旧报告。</div><div>从免登录页面读取并核对 HTTP 状态、HTML 内容类型及本报告唯一标识。</div><div>只有全部校验通过后才交付链接；否则报告真实失败原因，不以本地路径或未验证地址代替。</div></div></section>
+<footer>系统交付验收页 · 不构成买卖、仓位或订单指令。</footer>
+</main></body></html>
