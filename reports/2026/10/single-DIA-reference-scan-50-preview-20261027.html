@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="scan_run_id" content="reference-scan-50">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>道指ETF（DIA）· 单标的技术分析 · 2026-10-23</title>
+<style>
+  :root {
+    --bg:#f6f7f9; --panel:#ffffff; --text:#111827; --muted:#6b7280;
+    --line:#e4e7ec; --grid:#eceff3; --history-line:#526987;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0f1319; --panel:#161c24; --text:#e8edf4; --muted:#93a1b3;
+             --line:#242c37; --grid:#222a35; --history-line:#bdcce0; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text);
+         font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; }
+  .wrap { max-width:1000px; margin:0 auto; padding:28px 20px 60px; }
+  h1 { font-size:24px; margin:0 0 4px; }
+  h1 .code { color:var(--muted); font-weight:500; font-size:18px; }
+  h2 { font-size:15px; margin:30px 0 10px; letter-spacing:.02em; }
+  .sub { color:var(--muted); font-size:12.5px; margin-bottom:18px; }
+  .report-nav { position:sticky; top:0; z-index:5; display:flex; gap:7px; overflow-x:auto;
+    padding:9px 2px; margin:8px 0 18px; background:color-mix(in srgb,var(--bg) 92%,transparent);
+    backdrop-filter:blur(10px); scrollbar-width:thin; }
+  .report-nav a { flex:none; color:var(--muted); text-decoration:none; border:1px solid var(--line);
+    border-radius:999px; padding:5px 10px; font-size:11.5px; white-space:nowrap; }
+  .report-nav a:hover,.report-nav a:focus { color:var(--text); border-color:#4b86d1; }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px;
+            padding:16px 18px; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(178px,1fr)); gap:12px; }
+  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:12px;
+          padding:13px 15px; display:flex; flex-direction:column; gap:2px; }
+  .kpi-label { font-size:12px; color:var(--muted); }
+  .kpi-value { font-size:26px; font-weight:650; line-height:1.15; }
+  .kpi-foot { font-size:11px; color:var(--muted); }
+  ul.summary { margin:0; padding:0; list-style:none; display:grid; gap:9px; }
+  ul.summary li { margin:0; padding:10px 12px; border-left:3px solid #4b86d1;
+    background:color-mix(in srgb,var(--panel) 78%,var(--bg)); border-radius:0 8px 8px 0;
+    font-size:13.5px; line-height:1.7; }
+  .legend { display:flex; gap:16px; font-size:12px; color:var(--muted); margin:2px 0 10px; flex-wrap:wrap; }
+  .legend i { width:10px; height:10px; border-radius:3px; display:inline-block; margin-right:6px; }
+  .badge-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+  h3.group { font-size:12.5px; color:var(--muted); font-weight:600; margin:4px 0 8px; }
+  table.ladder { width:100%; border-collapse:collapse; font-size:12.5px; margin-top:12px; }
+  table.ladder th { text-align:left; color:var(--muted); font-weight:500; padding:6px 8px;
+                     border-bottom:1px solid var(--line); }
+  table.ladder td { padding:5px 8px; border-bottom:1px solid var(--grid); }
+  table.ladder td.lvl { font-weight:700; width:64px; }
+  table.ladder td.num { text-align:right; font-variant-numeric:tabular-nums; width:104px; }
+  .badge-card { background:var(--panel); border:1px solid var(--line); border-radius:12px;
+                 padding:12px 14px; display:flex; gap:10px; align-items:flex-start; }
+  .badge-card .dot { width:9px; height:9px; border-radius:50%; margin-top:5px; flex:none; }
+  .badge-card strong { font-size:13px; }
+  .badge-card p { margin:3px 0 0; font-size:12px; color:var(--muted); line-height:1.55; }
+  .why { font-size:12px; color:var(--muted); margin:8px 0 0; line-height:1.65; }
+  .muted { color:var(--muted); }
+  .foot { margin-top:22px; font-size:12px; color:var(--muted); line-height:1.75; }
+  .foot b { color:var(--text); }
+  code { background:var(--grid); padding:1px 5px; border-radius:4px; font-size:11.5px; }
+  .stack { display:grid; gap:12px; }
+  .intraday { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+               margin-bottom:16px; padding:12px 16px; }
+  .intraday .tag { font-size:11px; font-weight:700; letter-spacing:.04em;
+                    background:var(--grid); color:var(--muted);
+                    padding:3px 8px; border-radius:999px; }
+  .intraday .intraday-price { font-size:22px; font-weight:700; }
+  .intraday .intraday-chg { font-size:15px; font-weight:650; }
+  .intraday .muted { font-size:11.5px; line-height:1.6; flex:1 1 320px; }
+  .scenario-chart svg { display:block; width:100%; height:auto; overflow:visible; }
+  .scenario-chart .scenario-plot-scroll { overflow-x:auto; overscroll-behavior-x:contain;
+    scrollbar-width:thin; scrollbar-color:var(--muted) var(--grid); }
+  .scenario-chart .scenario-swipe-hint { display:none; color:var(--muted); font-size:11px; margin:5px 0 0; }
+  /* 五级情景色阶：概率越高颜色越深（--sc1 最深 … --sc5 最浅），深浅即概率排序。 */
+  :root { --sc1:#1f5fc4; --sc2:#3b7ede; --sc3:#6ba0ea; --sc4:#9dbef1; --sc5:#b3cbec; }
+  @media (prefers-color-scheme: dark) {
+    :root { --sc1:#a8cdfb; --sc2:#86b4f2; --sc3:#6a9ad9; --sc4:#4d78b0; --sc5:#4a709f; }
+  }
+  .scenario-chart polyline, .scenario-chart line { fill:none; stroke:var(--c,var(--muted));
+    stroke-width:var(--w,1); stroke-linejoin:round; stroke-linecap:round; }
+  .scenario-chart text.sc-label { fill:var(--text); }
+  .scenario-chart text.sc-muted { fill:var(--muted); }
+  .scenario-chart .sc-grid { --c:var(--grid); }
+  .scenario-chart .sc-axis { --c:var(--line); }
+  .scenario-chart .sc-boundary { --c:var(--muted); stroke-dasharray:3 4; opacity:.85; }
+  .scenario-chart .sc-history { --c:var(--history-line); --w:2.35; }
+  .scenario-chart .sc-support { --c:#2fa06a; --w:1.1; stroke-dasharray:5 4; }
+  .scenario-chart .sc-resistance { --c:#e05a5a; --w:1.1; stroke-dasharray:5 4; }
+  .scenario-chart .sc-ink { --c:var(--text); }
+  .scenario-chart .sc-l1 { --c:var(--sc1); --w:2.9; }
+  .scenario-chart .sc-l2 { --c:var(--sc2); --w:2.5; }
+  .scenario-chart .sc-l3 { --c:var(--sc3); --w:2.2; }
+  .scenario-chart .sc-l4 { --c:var(--sc4); --w:1.9; }
+  .scenario-chart .sc-l5 { --c:var(--sc5); --w:1.7; }
+  .scenario-chart .sc-lead { --w:1; opacity:.55; }
+  .scenario-chart .sc-mark, .scenario-chart .sc-dot { fill:var(--c,var(--muted)); }
+  .scenario-chart circle.sc-current { fill:var(--text); stroke:var(--panel); stroke-width:2; }
+  .scenario-chart .scenario-legend { display:flex; gap:8px 16px; flex-wrap:wrap;
+    color:var(--muted); font-size:11.5px; margin-bottom:10px; align-items:center; }
+  .scenario-chart .scenario-method-callout { display:flex; flex-wrap:wrap; gap:6px 12px;
+    align-items:center; margin:0 0 10px; padding:9px 12px; border:1px solid var(--line);
+    border-radius:9px; background:var(--panel); color:var(--muted); font-size:11.5px; line-height:1.55; }
+  .scenario-chart .scenario-method-callout strong { color:var(--text); }
+  .scenario-chart .scenario-method-callout span { padding-left:9px; border-left:2px solid #4b86d1; }
+  .scenario-chart .scenario-legend b { color:var(--text); font-weight:650;
+    font-variant-numeric:tabular-nums; }
+  .scenario-chart .scenario-legend i { display:inline-block; width:16px; height:4px;
+    border-radius:2px; margin:0 5px 3px 0; background:var(--muted); }
+  .scenario-chart .scenario-legend i.band { height:9px!important; background:#4b8ef7!important;
+    opacity:.35; }
+  .scenario-chart .scenario-legend i.sc-mark { background:var(--c,var(--muted)); }
+  .scenario-stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+    gap:8px; margin-top:12px; }
+  .scenario-stat { background:var(--bg); border:1px solid var(--line); border-radius:9px;
+    padding:9px 11px; display:grid; gap:4px; font-size:11.5px; color:var(--muted); }
+  .scenario-stat strong { color:var(--text); font-size:12px; }
+  .scenario-stat span { display:flex; justify-content:space-between; gap:10px;
+    font-variant-numeric:tabular-nums; }
+  .scenario-stat em { font-style:normal; font-weight:650; }
+  .scenario-note { margin:10px 0 0; color:var(--muted); font-size:11.5px; line-height:1.65; }
+  .scenario-empty { border:1px dashed var(--line); border-radius:10px; padding:14px;
+    display:grid; gap:7px; color:var(--muted); font-size:12.5px; line-height:1.6; }
+  .scenario-empty strong { color:var(--text); }
+  @media (max-width:700px) {
+    .scenario-chart .scenario-plot-scroll svg { min-width:780px; }
+    .scenario-chart .scenario-swipe-hint { display:block; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>道指ETF <span class="code">DIA</span></h1>
+  <div class="sub">单标的技术分析 · 数据截止 <b>2026-10-23</b>（最近一个完整交易日） ·
+    扫描产物 <code>脱敏参考快照（2026-10-26生成，数据截至2026-10-23）</code> · 报告类型 PREMARKET_REFERENCE · 生成于 2026-10-26T12:32:15.499888+00:00</div>
+
+  <nav class="report-nav" aria-label="报告章节">
+    <a href="#summary">核心结论</a><a href="#metrics">指标</a><a href="#price">价格与价位</a>
+    <a href="#scenario">未来情景</a><a href="#structure">摆动结构</a><a href="#relative">相对强弱</a>
+    <a href="#risk">支持与风险</a><a href="#audit">数据审计</a>
+  </nav>
+  <h2 id="summary">核心观点摘要</h2>
+  <div class="panel"><ul class="summary"><li>收盘 <b>$521.37</b>（2026-10-23），信号状态 <b>预警</b>、技术评分 <b>69/100</b>；趋势方向 向上、阶段 健康上升；周线方向 <b>向上</b>（与日线同向）。</li><li>结构给出 <b>下降结构</b>，结构证据 <b>已确认更低高点、已确认更低低点</b>；最近确认摆动低点 <b>$504.70</b>，摆动位置＝贴近 EMA50。</li><li>区间表现 <b>+0.75%</b>（20 日）/ <b>-0.03%</b>（60 日）；同期大盘 QQQ、SPY 趋势 向下，相对强弱 —— 20 日相对 SPY <b>+2.3%</b>、相对 QQQ <b>+6.5%</b>。</li><li>价位结构：<b>上方最近压力 $527.93（+1.26%）</b>；下方最近支撑 $514.72（-1.28%）；价格正落在 $520.48（EMA50 最近值、EMA20 最近值） 上，该价位距现价不足 ±0.5%，不充当压力或支撑；延伸状态 未延伸，距 EMA20 约 0.32 ATR，RSI14 52.2。</li><li>短线线索见下方「支持因素 / 风险因素」两栏（多头线索 2 条、空头线索与缺口 2 条）；支撑 / 压力分布见价格走势图与价位阶梯表。</li></ul></div>
+
+  <h2 id="metrics">关键指标</h2>
+  <div class="kpis"><div class="kpi"><span class="kpi-label">最新收盘</span><span class="kpi-value" style="color:#dc2626">$521.37</span><span class="kpi-foot">-1.24% 较上一交易日</span></div><div class="kpi"><span class="kpi-label">20 日涨跌</span><span class="kpi-value" style="color:#15803d">+0.75%</span><span class="kpi-foot">5 日 +0.44%</span></div><div class="kpi"><span class="kpi-label">60 日涨跌</span><span class="kpi-value" style="color:#dc2626">-0.03%</span><span class="kpi-foot">120 日 +6.50%</span></div><div class="kpi"><span class="kpi-label">距 52 周高</span><span class="kpi-value" style="color:#dc2626">-3.95%</span><span class="kpi-foot">高 $542.81</span></div><div class="kpi"><span class="kpi-label">RSI14</span><span class="kpi-value" style="color:#94a3b8">52.2</span><span class="kpi-foot">＜30 为超卖区</span></div><div class="kpi"><span class="kpi-label">最近压力位 R1</span><span class="kpi-value" style="color:#dc2626">$527.93</span><span class="kpi-foot">距现价 +1.26%</span></div><div class="kpi"><span class="kpi-label">最近支撑位 S1</span><span class="kpi-value" style="color:#15803d">$514.72</span><span class="kpi-foot">距现价 -1.28%</span></div><div class="kpi"><span class="kpi-label">形态成熟度</span><span class="kpi-value" style="color:#94a3b8">预警</span><span class="kpi-foot">已持续 14 个交易日</span></div><div class="kpi"><span class="kpi-label">周线方向</span><span class="kpi-value" style="color:#15803d">向上</span><span class="kpi-foot">与日线同向；104 根周线（数据至 2026-10-16）</span></div></div>
+
+  <h2 id="price">价格走势与支撑 / 压力位（近 120 个交易日）</h2>
+  <div class="panel">
+    <div class="legend">
+      <span><i style="background:var(--text)"></i>价格（主源收盘，仅拆股调整）</span>
+      <span><i style="background:#dc2626"></i>压力位 R1–R3</span>
+      <span><i style="background:#15803d"></i>支撑位 S1–S3</span>
+      <span><i style="background:#94a3b8"></i>52 周高 / 低（落在图内时显示）</span>
+      <span>R1 / S1 为距现价最近的一档</span>
+    </div>
+    <svg viewBox="0 0 660 310" width="100%" role="img" aria-label="价格走势与支撑压力位"><line x1="52" y1="276.0" x2="542" y2="276.0" stroke="var(--grid)" stroke-width="1"/><text x="46" y="280.0" font-size="10" fill="var(--muted)" text-anchor="end">488.97</text><line x1="52" y1="212.0" x2="542" y2="212.0" stroke="var(--grid)" stroke-width="1"/><text x="46" y="216.0" font-size="10" fill="var(--muted)" text-anchor="end">503.43</text><line x1="52" y1="148.0" x2="542" y2="148.0" stroke="var(--grid)" stroke-width="1"/><text x="46" y="152.0" font-size="10" fill="var(--muted)" text-anchor="end">517.88</text><line x1="52" y1="84.0" x2="542" y2="84.0" stroke="var(--grid)" stroke-width="1"/><text x="46" y="88.0" font-size="10" fill="var(--muted)" text-anchor="end">532.34</text><line x1="52" y1="20.0" x2="542" y2="20.0" stroke="var(--grid)" stroke-width="1"/><text x="46" y="24.0" font-size="10" fill="var(--muted)" text-anchor="end">546.80</text><line x1="52" y1="103.5" x2="542" y2="103.5" stroke="#dc2626" stroke-width="1.3" stroke-dasharray="6 4" opacity="0.9"/><line x1="52" y1="83.1" x2="542" y2="83.1" stroke="#dc2626" stroke-width="1.3" stroke-dasharray="6 4" opacity="0.9"/><line x1="52" y1="60.1" x2="542" y2="60.1" stroke="#dc2626" stroke-width="1.3" stroke-dasharray="6 4" opacity="0.9"/><line x1="52" y1="162.0" x2="542" y2="162.0" stroke="#15803d" stroke-width="1.3" stroke-dasharray="6 4" opacity="0.9"/><line x1="52" y1="172.8" x2="542" y2="172.8" stroke="#15803d" stroke-width="1.3" stroke-dasharray="6 4" opacity="0.9"/><line x1="52" y1="202.7" x2="542" y2="202.7" stroke="#15803d" stroke-width="1.3" stroke-dasharray="6 4" opacity="0.9"/><line x1="52" y1="37.7" x2="542" y2="37.7" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2 3"/><text x="548.0" y="64.1" font-size="10" font-weight="600" fill="#dc2626">R3 537.73</text><text x="548.0" y="87.1" font-size="10" font-weight="600" fill="#dc2626">R2 532.54</text><text x="548.0" y="107.5" font-size="10" font-weight="600" fill="#dc2626">R1 527.93</text><text x="548.0" y="166.0" font-size="10" font-weight="600" fill="#15803d">S1 514.72</text><text x="600.0" y="176.8" font-size="10" font-weight="600" fill="#15803d">S2 512.29</text><text x="548.0" y="206.7" font-size="10" font-weight="600" fill="#15803d">S3 505.53</text><polyline points="52.0,258.3 56.1,231.4 60.2,245.3 64.4,244.3 68.5,240.0 72.6,236.5 76.7,239.8 80.8,223.6 84.9,247.7 89.1,240.4 93.2,253.8 97.3,226.1 101.4,213.4 105.5,200.1 109.6,203.9 113.8,196.7 117.9,196.0 122.0,179.5 126.1,176.5 130.2,165.0 134.4,190.6 138.5,153.2 142.6,184.2 146.7,187.7 150.8,185.5 154.9,226.1 159.1,185.7 163.2,169.4 167.3,145.5 171.4,132.3 175.5,155.0 179.6,158.5 183.8,151.6 187.9,153.6 192.0,145.2 196.1,141.9 200.2,148.6 204.4,131.2 208.5,128.1 212.6,128.0 216.7,103.8 220.8,94.0 224.9,101.2 229.1,126.4 233.2,120.1 237.3,113.0 241.4,118.8 245.5,117.9 249.6,112.3 253.8,117.3 257.9,135.1 262.0,147.8 266.1,132.0 270.2,132.1 274.4,155.2 278.5,144.1 282.6,133.1 286.7,108.1 290.8,159.0 294.9,132.0 299.1,119.5 303.2,89.0 307.3,48.2 311.4,37.7 315.5,58.1 319.6,51.8 323.8,54.6 327.9,62.1 332.0,62.7 336.1,59.3 340.2,64.3 344.4,75.8 348.5,81.5 352.6,75.5 356.7,105.4 360.8,84.5 364.9,78.2 369.1,71.2 373.2,75.6 377.3,71.3 381.4,72.0 385.5,87.4 389.6,104.3 393.8,91.6 397.9,63.7 402.0,76.3 406.1,103.1 410.2,120.6 414.4,135.3 418.5,113.0 422.6,118.8 426.7,133.2 430.8,159.8 434.9,145.9 439.1,156.9 443.2,139.6 447.3,147.5 451.4,163.9 455.5,171.0 459.6,149.7 463.8,165.1 467.9,170.2 472.0,189.3 476.1,189.0 480.2,178.0 484.4,173.6 488.5,162.7 492.6,178.4 496.7,175.6 500.8,155.9 504.9,147.9 509.1,155.4 513.2,158.0 517.3,133.4 521.4,142.6 525.5,143.4 529.6,119.3 533.8,104.5 537.9,103.7 542.0,132.6" fill="none" stroke="var(--text)" stroke-width="2" stroke-linejoin="round" opacity="0.78"/><circle cx="542.0" cy="132.6" r="3.6" fill="var(--text)"/><text x="536.0" y="123.6" font-size="11" font-weight="600" fill="var(--text)" text-anchor="end">521.37</text><text x="52.0" y="298" font-size="10" fill="var(--muted)" text-anchor="start">2026-05-05</text><text x="542.0" y="298" font-size="10" fill="var(--muted)" text-anchor="end">2026-10-23</text></svg>
+    <table class="ladder"><thead><tr><th>级别</th><th>价位</th><th>距现价</th><th>依据</th></tr></thead><tbody><tr><td class="lvl" style="color:#dc2626">R3</td><td class="num">$537.73</td><td class="num" style="color:#dc2626">+3.14%</td><td>确认摆动高点 2026-08-28、结构突破位</td></tr><tr><td class="lvl" style="color:#dc2626">R2</td><td class="num">$532.54</td><td class="num" style="color:#dc2626">+2.14%</td><td>确认摆动高点 2026-07-07</td></tr><tr><td class="lvl" style="color:#dc2626">R1</td><td class="num">$527.93</td><td class="num" style="color:#dc2626">+1.26%</td><td>确认摆动高点 2026-07-16、确认摆动低点 2026-08-20</td></tr><tr style="background:var(--grid);font-weight:700"><td class="lvl" style="color:var(--text)">现价位</td><td class="num">$520.48</td><td class="num" style="color:var(--text)">-0.17%</td><td>EMA50 最近值、EMA20 最近值</td></tr><tr style="background:var(--grid);font-weight:700"><td class="lvl" style="color:var(--text)">现价 →</td><td class="num">$521.37</td><td class="num" style="color:var(--text)">+0.00%</td><td>本次扫描收盘（主源）</td></tr><tr><td class="lvl" style="color:#15803d">S1</td><td class="num">$514.72</td><td class="num" style="color:#15803d">-1.28%</td><td>确认摆动低点 2026-07-23</td></tr><tr><td class="lvl" style="color:#15803d">S2</td><td class="num">$512.29</td><td class="num" style="color:#15803d">-1.74%</td><td>确认摆动低点 2026-09-16</td></tr><tr><td class="lvl" style="color:#15803d">S3</td><td class="num">$505.53</td><td class="num" style="color:#15803d">-3.04%</td><td>EMA200 最近值、确认摆动低点 2026-10-01 等 3 项</td></tr></tbody></table><p class="muted">标「现价位」的价位与现价相差不足 ±0.5%，价格正落在其上，既不算压力也不算支撑。</p><p class="why">口径：价位取自本项目已确认的摆动高点 / 低点、均线最近值（EMA20 / EMA50 / EMA200）与结构位，不引入新指标、不做模型侧测算；现价上方 0.5% 以上记为压力位、下方 0.5% 以上记为支撑位（已跌破的确认摆动低点自动转为压力，已站上的摆动高点转为支撑），与现价相差不足 ±0.5% 的价位列为「现价位」；支撑 / 压力各取距现价最近的 3 个。结构失效位 $504.70、结构突破位 $537.73。仅供研究，不构成交易指令。</p>
+  </div>
+
+  <h2 id="scenario">未来 20 个交易日技术情景（非确定性预测）</h2>
+  <div class="panel">
+    <p class="why">左段深色线为历史收盘，右段浅蓝底纹区为未来 20 个交易日的情景：
+      路径按终端落入区间切成「强势下行 / 温和下行 / 区间震荡 / 温和上行 / 强势上行」五档，
+      每档画一条代表线（档内逐点中位数），<b>颜色越深、线越粗，该档占比越高</b>；
+      预测区域约占图宽一半；浅色分位带只作背景，五条路径保持清晰；
+      绿色 / 红色横线为同一快照的结构支撑 / 压力参考，右栏数值按价位高低排序、必要时用引线错开，避免叠字。
+      各档占比是本批路径的经验频率，不是上涨概率、目标价或经过校准的预测区间。</p>
+    <div class="scenario-chart"><div class="scenario-method-callout"><strong>读图提示</strong><span>深色历史线＝已完成日线收盘</span><span>五条未来线＝各档代表路径，颜色深、线条粗表示本批经验频率较高</span><span>横向分段为便于阅读，历史与情景段不是等比例时间轴</span></div><div class="scenario-legend"><span><i class="sc-mark sc-l1"></i>区间震荡 <b>38%</b></span><span><i class="sc-mark sc-l2"></i>温和上行 <b>31%</b></span><span><i class="sc-mark sc-l3"></i>温和下行 <b>18%</b></span><span><i class="sc-mark sc-l4"></i>强势上行 <b>12%</b></span><span><i class="sc-mark sc-l5"></i>强势下行 <b>1%</b></span><span><i class="sc-mark sc-ink"></i>历史收盘</span><span><i class="band"></i>情景第10–90分位范围<b> $511.96 – $542.55</b></span><span><i class="sc-mark sc-support"></i>结构支撑参考<b> $514.72 / $512.29</b></span><span><i class="sc-mark sc-resistance"></i>结构压力参考<b> $527.93 / $532.54</b></span></div><div class="scenario-plot-scroll" tabindex="0" aria-label="情景图，可左右滑动查看完整价位标签"><svg viewBox="0 0 940 486" role="img" aria-label="历史K线收盘与未来技术情景区间图" data-forecast-share="0.50"><line class="sc-grid" x1="76" y1="44.0" x2="756" y2="44.0"/><text class="sc-muted" x="67" y="48.0" text-anchor="end" font-size="11.5">$552.78</text><line class="sc-grid" x1="76" y1="120.8" x2="756" y2="120.8"/><text class="sc-muted" x="67" y="124.8" text-anchor="end" font-size="11.5">$539.26</text><line class="sc-grid" x1="76" y1="197.6" x2="756" y2="197.6"/><text class="sc-muted" x="67" y="201.6" text-anchor="end" font-size="11.5">$525.74</text><line class="sc-grid" x1="76" y1="274.4" x2="756" y2="274.4"/><text class="sc-muted" x="67" y="278.4" text-anchor="end" font-size="11.5">$512.23</text><line class="sc-grid" x1="76" y1="351.2" x2="756" y2="351.2"/><text class="sc-muted" x="67" y="355.2" text-anchor="end" font-size="11.5">$498.71</text><line class="sc-grid" x1="76" y1="428.0" x2="756" y2="428.0"/><text class="sc-muted" x="67" y="432.0" text-anchor="end" font-size="11.5">$485.19</text><rect x="416.0" y="44" width="340.0" height="384" fill="#4b8ef7" opacity=".05"/><text class="sc-muted" x="246.0" y="29.0" text-anchor="middle" font-size="11.5">历史 · 已实现</text><text class="sc-label" x="586.0" y="29.0" text-anchor="middle" font-size="11.5">情景 · 20 日</text><polygon points="416.0,222.5 433.0,191.4 450.0,193.7 467.0,180.7 484.0,187.3 501.0,173.0 518.0,158.7 535.0,156.6 552.0,146.7 569.0,153.0 586.0,142.0 603.0,138.2 620.0,136.8 637.0,127.3 654.0,135.8 671.0,120.3 688.0,117.3 705.0,109.5 722.0,108.6 739.0,107.6 756.0,102.1 756.0,275.9 739.0,282.1 722.0,289.4 705.0,281.5 688.0,296.6 671.0,284.1 654.0,278.6 637.0,281.3 620.0,277.2 603.0,282.4 586.0,278.3 569.0,273.1 552.0,257.4 535.0,265.5 518.0,265.5 501.0,259.5 484.0,252.1 467.0,257.4 450.0,252.5 433.0,243.6 416.0,222.5" fill="#4b8ef7" opacity=".06"/><polygon points="416.0,222.5 433.0,206.8 450.0,205.6 467.0,201.6 484.0,205.5 501.0,192.7 518.0,192.1 535.0,186.4 552.0,186.3 569.0,188.6 586.0,176.2 603.0,164.2 620.0,167.5 637.0,161.4 654.0,161.8 671.0,155.9 688.0,143.4 705.0,145.1 722.0,142.9 739.0,147.6 756.0,132.8 756.0,242.4 739.0,237.8 722.0,240.6 705.0,246.9 688.0,247.1 671.0,245.1 654.0,248.2 637.0,255.1 620.0,254.6 603.0,254.4 586.0,251.7 569.0,248.1 552.0,248.3 535.0,246.1 518.0,241.8 501.0,244.1 484.0,243.3 467.0,237.5 450.0,240.1 433.0,229.6 416.0,222.5" fill="#4b8ef7" opacity=".09"/><polyline class="sc-history" points="76.0,383.9 78.9,349.3 81.7,367.1 84.6,365.9 87.4,360.3 90.3,355.9 93.1,360.1 96.0,339.3 98.9,370.2 101.7,360.9 104.6,378.1 107.4,342.5 110.3,326.2 113.1,309.1 116.0,314.0 118.9,304.8 121.7,303.8 124.6,282.6 127.4,278.9 130.3,264.0 133.1,296.9 136.0,249.0 138.9,288.8 141.7,293.3 144.6,290.4 147.4,342.5 150.3,290.7 153.1,269.7 156.0,239.1 158.9,222.1 161.7,251.3 164.6,255.7 167.4,246.8 170.3,249.4 173.1,238.6 176.0,234.4 178.9,243.0 181.7,220.7 184.6,216.7 187.4,216.6 190.3,185.5 193.1,172.9 196.0,182.2 198.9,214.5 201.7,206.4 204.6,197.4 207.4,204.8 210.3,203.6 213.1,196.4 216.0,202.8 218.9,225.6 221.7,241.9 224.6,221.7 227.4,221.9 230.3,251.5 233.1,237.3 236.0,223.1 238.9,191.1 241.7,256.3 244.6,221.7 247.4,205.7 250.3,166.5 253.1,114.2 256.0,100.6 258.9,126.9 261.7,118.8 264.6,122.3 267.4,132.1 270.3,132.8 273.1,128.5 276.0,134.8 278.9,149.6 281.7,156.9 284.6,149.2 287.4,187.6 290.3,160.8 293.1,152.7 296.0,143.6 298.9,149.4 301.7,143.8 304.6,144.7 307.4,164.5 310.3,186.2 313.1,169.9 316.0,134.0 318.9,150.2 321.7,184.6 324.6,207.1 327.4,226.0 330.3,197.3 333.1,204.7 336.0,223.2 338.9,257.4 341.7,239.6 344.6,253.6 347.4,231.5 350.3,241.6 353.1,262.6 356.0,271.8 358.9,244.5 361.7,264.2 364.6,270.7 367.4,295.3 370.3,294.9 373.1,280.8 376.0,275.1 378.9,261.1 381.7,281.3 384.6,277.7 387.4,252.3 390.3,242.1 393.1,251.8 396.0,255.1 398.9,223.5 401.7,235.4 404.6,236.4 407.4,205.5 410.3,186.5 413.1,185.4 416.0,222.5"/><polyline class="sc-line sc-l5" points="416.0,222.5 433.0,228.0 450.0,222.6 467.0,223.5 484.0,242.8 501.0,263.9 518.0,269.4 535.0,264.0 552.0,264.9 569.0,283.9 586.0,304.8 603.0,325.4 620.0,334.4 637.0,307.6 654.0,326.9 671.0,333.2 688.0,365.6 705.0,386.7 722.0,404.4 739.0,377.5 756.0,384.5"/><polyline class="sc-line sc-l4" points="416.0,222.5 433.0,212.6 450.0,219.4 467.0,197.3 484.0,202.4 501.0,189.0 518.0,155.6 535.0,157.7 552.0,164.2 569.0,178.5 586.0,166.6 603.0,146.1 620.0,124.2 637.0,109.6 654.0,120.4 671.0,114.5 688.0,102.7 705.0,89.3 722.0,87.5 739.0,89.2 756.0,67.6"/><polyline class="sc-line sc-l3" points="416.0,222.5 433.0,228.6 450.0,238.2 467.0,234.8 484.0,244.2 501.0,247.5 518.0,253.8 535.0,259.3 552.0,256.3 569.0,271.3 586.0,275.2 603.0,277.0 620.0,263.5 637.0,272.5 654.0,273.2 671.0,276.4 688.0,279.9 705.0,274.6 722.0,291.3 739.0,282.3 756.0,279.5"/><polyline class="sc-line sc-l2" points="416.0,222.5 433.0,214.9 450.0,218.1 467.0,226.3 484.0,220.4 501.0,213.0 518.0,207.3 535.0,196.8 552.0,202.6 569.0,202.2 586.0,186.2 603.0,182.0 620.0,187.4 637.0,168.0 654.0,163.5 671.0,163.2 688.0,156.0 705.0,152.3 722.0,151.7 739.0,148.9 756.0,134.0"/><polyline class="sc-line sc-l1" points="416.0,222.5 433.0,221.8 450.0,217.9 467.0,223.8 484.0,228.5 501.0,213.1 518.0,219.1 535.0,222.4 552.0,230.1 569.0,220.8 586.0,225.3 603.0,221.9 620.0,226.9 637.0,224.4 654.0,219.2 671.0,213.7 688.0,214.4 705.0,210.2 722.0,212.5 739.0,222.4 756.0,220.5"/><line class="sc-boundary" x1="416.0" y1="44" x2="416.0" y2="428"/><circle class="sc-current" cx="416.0" cy="222.5" r="4.2"/><line class="sc-support" x1="76" y1="260.2" x2="756" y2="260.2"/><line class="sc-support" x1="76" y1="274.0" x2="756" y2="274.0"/><line class="sc-resistance" x1="76" y1="185.2" x2="756" y2="185.2"/><line class="sc-resistance" x1="76" y1="159.0" x2="756" y2="159.0"/><circle class="sc-dot sc-l4" cx="756" cy="67.6" r="2.6"/><rect class="sc-mark sc-l4" x="768.0" y="64.1" width="7" height="7" rx="1.5"/><text class="sc-label" x="779.0" y="71.6" font-size="11">强势上行 12% $548.63</text><circle class="sc-dot sc-l2" cx="756" cy="134.0" r="2.6"/><rect class="sc-mark sc-l2" x="768.0" y="130.5" width="7" height="7" rx="1.5"/><text class="sc-label" x="779.0" y="138.0" font-size="11">温和上行 31% $536.93</text><rect class="sc-mark sc-resistance" x="768.0" y="155.5" width="7" height="7" rx="1.5"/><text class="sc-label" x="779.0" y="163.0" font-size="11">压力2 $532.54</text><rect class="sc-mark sc-resistance" x="768.0" y="181.7" width="7" height="7" rx="1.5"/><text class="sc-label" x="779.0" y="189.2" font-size="11">压力1 $527.93</text><circle class="sc-dot sc-l1" cx="756" cy="220.5" r="2.6"/><rect class="sc-mark sc-l1" x="768.0" y="217.0" width="7" height="7" rx="1.5"/><text class="sc-label" x="779.0" y="224.5" font-size="11">区间震荡 38% $521.72</text><line class="sc-lead sc-ink" x1="756" y1="222.5" x2="763.0" y2="234.5"/><rect class="sc-mark sc-ink" x="768.0" y="231.0" width="7" height="7" rx="1.5"/><text class="sc-label" x="779.0" y="238.5" font-size="11">现价 $521.37</text><rect class="sc-mark sc-support" x="768.0" y="256.7" width="7" height="7" rx="1.5"/><text class="sc-label" x="779.0" y="264.2" font-size="11">支撑1 $514.72</text><rect class="sc-mark sc-support" x="768.0" y="270.7" width="7" height="7" rx="1.5"/><text class="sc-label" x="779.0" y="278.2" font-size="11">支撑2 $512.29</text><line class="sc-lead sc-l3" x1="756" y1="279.5" x2="763.0" y2="288.2"/><circle class="sc-dot sc-l3" cx="756" cy="279.5" r="2.6"/><rect class="sc-mark sc-l3" x="768.0" y="284.7" width="7" height="7" rx="1.5"/><text class="sc-label" x="779.0" y="292.2" font-size="11">温和下行 18% $511.32</text><circle class="sc-dot sc-l5" cx="756" cy="384.5" r="2.6"/><rect class="sc-mark sc-l5" x="768.0" y="381.0" width="7" height="7" rx="1.5"/><text class="sc-label" x="779.0" y="388.5" font-size="11">强势下行 1% $492.86</text><line class="sc-axis" x1="76" y1="428" x2="756" y2="428"/><text class="sc-muted" x="76.0" y="449.0" text-anchor="start" font-size="11">2026-05-05</text><text class="sc-muted" x="190.3" y="449.0" text-anchor="middle" font-size="11">2026-07-02</text><text class="sc-muted" x="304.6" y="449.0" text-anchor="middle" font-size="11">2026-08-28</text><text class="sc-label" x="408.0" y="449.0" text-anchor="end" font-size="11">2026-10-23</text><line class="sc-axis" x1="501.0" y1="428" x2="501.0" y2="432"/><line class="sc-axis" x1="586.0" y1="428" x2="586.0" y2="432"/><line class="sc-axis" x1="671.0" y1="428" x2="671.0" y2="432"/><text class="sc-label" x="756.0" y="449.0" text-anchor="end" font-size="11">+20 日</text></svg></div><div class="scenario-swipe-hint">手机上可左右滑动查看图表与右侧价位标签</div><div class="scenario-technical-context"><strong>截止日技术背景（仅作分层记录）</strong><span>均线排列：MIXED</span><span>RSI14：52.2</span><span>ATR14/收盘：1.02%</span><small>该背景不改变抽样路径或情景频率；用于后续按技术状态复核历史结果。</small></div><details class="scenario-audit"><summary>数据口径与情景分档（展开查看）</summary><div class="scenario-audit-scroll"><table><tbody><tr><th>盘中参考报价</th><td>无独立盘中报价</td></tr><tr><th>最近完整日线 / 指标截止</th><td>2026-10-23 收盘 $521.37；指标截止 2026-10-23</td></tr><tr><th>情景起点</th><td>已完成日线收盘 $521.37（2026-10-23）；盘中报价不参与起算或抽样</td></tr><tr><th>日线来源 / 复权口径</th><td>nasdaq / SPLIT_ADJUSTED</td></tr><tr><th>抽样设置</th><td>120 个日收益样本；区块 5 日；期限 20 日；路径 100 条</td></tr><tr><th>σ 定义</th><td>本批模拟路径终端相对收益的横截面标准差（非年化历史波动率）：2.51%</td></tr></tbody></table></div><h4>五档边界与本次经验频率</h4><div class="scenario-audit-scroll"><table><thead><tr><th>情景</th><th>终端收益边界（相对日线起点）</th><th>路径占比</th><th>档内代表终值</th></tr></thead><tbody><tr><td>强势下行</td><td>−∞ 至 -3.76%；低于 $501.75</td><td>1.0%</td><td>$492.86</td></tr><tr><td>温和下行</td><td>-3.76% 至 -1.25%（$501.75 至 $514.83；终端价按左闭右开分档）</td><td>18.0%</td><td>$511.32</td></tr><tr><td>区间震荡</td><td>-1.25% 至 +1.25%（$514.83 至 $527.91；终端价按左闭右开分档）</td><td>38.0%</td><td>$521.72</td></tr><tr><td>温和上行</td><td>+1.25% 至 +3.76%（$527.91 至 $540.99；终端价按左闭右开分档）</td><td>31.0%</td><td>$536.93</td></tr><tr><td>强势上行</td><td>+3.76% 至 +∞；高于 $540.99</td><td>12.0%</td><td>$548.63</td></tr></tbody></table></div><p>档界为本次模拟终端收益标准差的 ±0.5σ / ±1.5σ；分档占比只是本批路径的经验频率，不是上涨概率或校准置信区间。</p></details><div class="scenario-stat-grid"><div class="scenario-stat"><strong>5日情景分布</strong><span>第10分位 $514.85<em style="color:#e05a5a">-1.3%</em></span><span>中位 $522.59<em style="color:#2fa06a">+0.2%</em></span><span>第90分位 $530.07<em style="color:#2fa06a">+1.7%</em></span></div><div class="scenario-stat"><strong>10日情景分布</strong><span>第10分位 $511.54<em style="color:#e05a5a">-1.9%</em></span><span>中位 $522.53<em style="color:#2fa06a">+0.2%</em></span><span>第90分位 $535.53<em style="color:#2fa06a">+2.7%</em></span></div><div class="scenario-stat"><strong>20日情景分布</strong><span>第10分位 $511.96<em style="color:#e05a5a">-1.8%</em></span><span>中位 $525.03<em style="color:#2fa06a">+0.7%</em></span><span>第90分位 $542.55<em style="color:#2fa06a">+4.1%</em></span></div></div><p class="scenario-note">方法：近端日收益率区块重抽样情景；取最近 120 个日收益样本，按 5 日区块重抽样，生成 100 条路径；数据截止 2026-10-23。情景占比＝100 条路径中终端落入该档的条数比例（经验频率；σ=2.51%，为本批模拟终端相对收益的横截面标准差，非年化历史波动率；不是校准概率）。分位线只描述本次历史收益重抽样路径的分布，不是经校准的置信区间或上涨概率；这不是经过训练并校准的机器学习预测模型；情景不改变技术评分、正式状态或研究资格。</p></div>
+  </div>
+
+  <h2 id="structure">确认摆动结构</h2>
+  <div class="panel">
+    <div class="legend">
+      <span><i style="background:#15803d"></i>确认摆动高点</span>
+      <span><i style="background:#dc2626"></i>确认摆动低点</span>
+      <span>灰色折线＝摆动点连线；仅含已被确认的摆动点</span>
+    </div>
+    <svg viewBox="0 0 660 250" width="100%" role="img" aria-label="确认摆动结构"><line x1="46" y1="137.5" x2="550" y2="137.5" stroke="#dc2626" stroke-width="1.4" stroke-dasharray="5 3"/><text x="555" y="141.5" font-size="10" fill="#dc2626">现价 521.37</text><path d="M46.0,95.1 L109.0,112.6 L172.0,162.8 L235.0,41.2 L298.0,115.4 L361.0,75.4 L424.0,172.0 L487.0,200.8" fill="none" stroke="var(--muted)" stroke-width="1.6"/><circle cx="46.0" cy="95.1" r="4" fill="#15803d"/><text x="46.0" y="85.1" font-size="9.5" fill="#15803d" text-anchor="middle">532.54</text><text x="46.0" y="240" font-size="9" fill="var(--muted)" text-anchor="middle">07-07</text><circle cx="109.0" cy="112.6" r="4" fill="#15803d"/><text x="109.0" y="102.6" font-size="9.5" fill="#15803d" text-anchor="middle">527.93</text><text x="109.0" y="240" font-size="9" fill="var(--muted)" text-anchor="middle">07-16</text><circle cx="172.0" cy="162.8" r="4" fill="#dc2626"/><text x="172.0" y="178.8" font-size="9.5" fill="#dc2626" text-anchor="middle">514.72</text><text x="172.0" y="240" font-size="9" fill="var(--muted)" text-anchor="middle">07-23</text><circle cx="235.0" cy="41.2" r="4" fill="#15803d"/><text x="235.0" y="31.2" font-size="9.5" fill="#15803d" text-anchor="middle">546.75</text><text x="235.0" y="240" font-size="9" fill="var(--muted)" text-anchor="middle">08-05</text><circle cx="298.0" cy="115.4" r="4" fill="#dc2626"/><text x="298.0" y="131.4" font-size="9.5" fill="#dc2626" text-anchor="middle">527.20</text><text x="298.0" y="240" font-size="9" fill="var(--muted)" text-anchor="middle">08-20</text><circle cx="361.0" cy="75.4" r="4" fill="#15803d"/><text x="361.0" y="65.4" font-size="9.5" fill="#15803d" text-anchor="middle">537.73</text><text x="361.0" y="240" font-size="9" fill="var(--muted)" text-anchor="middle">08-28</text><circle cx="424.0" cy="172.0" r="4" fill="#dc2626"/><text x="424.0" y="188.0" font-size="9.5" fill="#dc2626" text-anchor="middle">512.29</text><text x="424.0" y="240" font-size="9" fill="var(--muted)" text-anchor="middle">09-16</text><circle cx="487.0" cy="200.8" r="4" fill="#dc2626"/><text x="487.0" y="216.8" font-size="9.5" fill="#dc2626" text-anchor="middle">504.70</text><text x="487.0" y="240" font-size="9" fill="var(--muted)" text-anchor="middle">10-01</text></svg>
+    <p class="why">结构证据：已确认更低高点、已确认更低低点；
+      结构确认日 2026-10-08；
+      结构失效状态 <b>未失效</b>
+      （触发判据：仅有K线转弱尚不构成结构失效）；
+      下一次结构确认条件：等待后续完整日线确认是否失守最近确认摆动低点。</p>
+  </div>
+
+  <h2 id="relative">相对强弱与区间表现</h2>
+  <div class="panel">
+    <div class="legend">
+      <span><i style="background:#15803d"></i>跑赢（正值）</span>
+      <span><i style="background:#dc2626"></i>跑输（负值）</span>
+      <span>相对强弱＝与基准的区间涨跌幅之差（正式链路结果）</span>
+    </div>
+    <svg viewBox="0 0 660 152" width="100%" role="img" aria-label="相对强弱与区间表现"><line x1="371.0" y1="20" x2="371.0" y2="136" stroke="var(--grid)"/><text x="172.0" y="16" font-size="10" fill="var(--muted)" text-anchor="middle">-7%</text><text x="371.0" y="16" font-size="10" fill="var(--muted)" text-anchor="middle">+0%</text><text x="570.0" y="16" font-size="10" fill="var(--muted)" text-anchor="middle">+7%</text><text x="160" y="48" font-size="11.5" fill="var(--text)" text-anchor="end">DIA（区间涨跌幅）</text><rect x="371.0" y="36" width="20.0" height="15" rx="3" fill="#15803d"/><text x="576" y="48" font-size="11" fill="#15803d">20日 +0.7%</text><text x="576" y="61" font-size="10" fill="var(--muted)">60日 -0.0%</text><text x="160" y="82" font-size="11.5" fill="var(--text)" text-anchor="end">相对 QQQ（强弱差）</text><rect x="371.0" y="70" width="173.0" height="15" rx="3" fill="#15803d"/><text x="576" y="82" font-size="11" fill="#15803d">20日 +6.5%</text><text x="576" y="95" font-size="10" fill="var(--muted)">60日 -3.0%</text><text x="160" y="116" font-size="11.5" fill="var(--text)" text-anchor="end">相对 SPY（强弱差）</text><rect x="371.0" y="104" width="60.3" height="15" rx="3" fill="#15803d"/><text x="576" y="116" font-size="11" fill="#15803d">20日 +2.3%</text><text x="576" y="129" font-size="10" fill="var(--muted)">60日 -2.4%</text></svg>
+  </div>
+
+  <h2 id="risk">支持因素与风险因素</h2>
+  <div class="stack">
+    <h3 class="group">多头线索（尚未构成确认）</h3><div class="badge-grid"><div class="badge-card"><span class="dot" style="background:#15803d"></span><div><strong>重新站上 EMA20</strong><p>扫描记录 EMA20_RECLAIMED</p></div></div><div class="badge-card"><span class="dot" style="background:#15803d"></span><div><strong>位于均线之上</strong><p>高于 EMA20 519.68 / EMA50 520.48 / EMA200 505.53</p></div></div></div>
+    <h3 class="group">空头线索与数据缺口</h3><div class="badge-grid"><div class="badge-card"><span class="dot" style="background:#dc2626"></span><div><strong>突破失败（前一日收在20日高之上、次日又跌回其下）</strong><p>扫描记录的衰竭证据</p></div></div><div class="badge-card"><span class="dot" style="background:#dc2626"></span><div><strong>中期相对强弱双输</strong><p>60 日在 QQQ 与 SPY 两个基准上均跑输：QQQ 20 日 +6.5%（跑赢）、60 日 -3.0%；SPY 20 日 +2.3%（跑赢）、60 日 -2.4%</p></div></div></div>
+  </div>
+
+
+  <h2 id="audit">执行与数据链路（简）</h2>
+  <div class="panel foot">
+    <p style="margin:0 0 6px">主源 <b>nasdaq</b>（Nasdaq，口径＝仅拆股调整）：DIA 缓存
+      <b>1098</b> 根日线（2022-06-09 起），
+      最近完整交易日 <b>2026-10-23</b> 收盘 <b>$521.37</b>，
+      本标的自身数据质量 <b>OK</b>；
+      均线 / RSI 来源：<b>项目自带指标引擎复算（本标的不是持仓，扫描产物不含均线最近值；与扫描口径一致，距 EMA20 的 ATR 倍数已对账）</b>。</p>
+    <p style="margin:0 0 6px">旁证层（连接器，口径 RAW；只做<b>同会话</b>收盘比对，
+      不参与任何指标或评分计算；仅最后一根停在最近一个已完成交易日的源才算通过本次门控）：本次<b>无任何旁证源覆盖本标的</b>。
+      </p>
+    <p style="margin:0 0 6px">本次运行整体状态 <b>None</b>，
+      触发原因 <b>DIA </b>；本标的自身数据完整，不受该降级影响。市场环境：大盘主趋势 <b>DOWN</b>，
+      综合状态 TRANSITIONAL_MIXED，市场风险标记
+      LOW_DATA_COVERAGE（数据覆盖 50.0%，置信度 LOW）。</p>
+    <p style="margin:0 0 6px">本次口径说明：相对强弱 正式链路已产出（相对强弱分基准：QQQ 20 日 +6.5%（跑赢）、60 日 -3.0%；SPY 20 日 +2.3%（跑赢）、60 日 -2.4%），本报告直接引用正式链路结果；
+      周线 / 相对强弱 / 量能三组辅助上下文来源 <b>扫描产物自带</b>；
+      均线 / RSI / ATR 来源 <b>项目自带指标引擎复算（本标的不是持仓，扫描产物不含均线最近值；与扫描口径一致，距 EMA20 的 ATR 倍数已对账）</b>；
+      量能 <b>VALID</b>；多周期 <b>AVAILABLE</b>；
+      基本面 <b>AVAILABLE</b>；机构 <b>NOT_AVAILABLE</b>。
+      </p>
+    <p style="margin:0">原始明细：<code>脱敏参考快照（2026-10-26生成，数据截至2026-10-23）</code> 及同名 <code>.md / .csv</code>；
+      旁证：—。
+      仅供研究，不构成订单或自动交易指令。</p>
+  </div>
+</div>
+</body>
+</html>
